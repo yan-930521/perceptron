@@ -2,11 +2,11 @@ const { log, clear } = console
 
 function perceptron(x, y, z, eta, t, ans) {
   clear()
-  var w = []
-  var result = []
-  var Y_vec = []
-  var errors = []
-  var J = []
+  let w = []
+  let result = []
+  let Y_vec = []
+  let errors = []
+  let J = []
   //初始化權重
   //長度需與特徵數量相同
   for (let i in x[0]) {
@@ -20,19 +20,19 @@ function perceptron(x, y, z, eta, t, ans) {
 
   log('初始化權重:' + w)
 
-  var n = 0
+  let n = 0
 
   while (t > n) {
     //權重乘以輸入，加總
     //求點積
     result = []
     for (let a in x) {
-      var resultIn = []
+      let resultIn = []
       for (let b in x[a]) {
         resultIn.push(w[b] * x[a][b])
         log('權重乘以輸入:' + resultIn)
       }
-      var all = 0
+      let all = 0
       for (let c in resultIn) {
         all += Number(resultIn[c])
       }
@@ -46,7 +46,7 @@ function perceptron(x, y, z, eta, t, ans) {
 
     log('激活函數')
 
-    var resultY = []
+    let resultY = []
     for (let a in result) {
       if (result[a] > z) {
         resultY.push(ans[1])
@@ -79,7 +79,7 @@ function perceptron(x, y, z, eta, t, ans) {
     for (let a = 0; a < y.length; a++) {
       errors[a] = Math.pow((y[a] - Y_vec[a]), 2)
     }
-    var all2 = 0
+    let all2 = 0
     for (let c in errors) {
       all2 += Number(errors[c])
     }
@@ -90,10 +90,8 @@ function perceptron(x, y, z, eta, t, ans) {
 
 function check(x, z, eta, w) {
   //求點積
-  let result = []
   let ALL = 0
   for (let a in x) {
-    let resultIn = []
     ALL += w[a] * x[a]
   }
   return ALL
@@ -101,10 +99,8 @@ function check(x, z, eta, w) {
 
 function judge(x, z, eta, w) {
   //求點積
-  let result = []
   let ALL = 0
   for (let a in x) {
-    let resultIn = []
     ALL += w[a] * x[a]
   }
   return ALL>z?0:1
@@ -112,18 +108,18 @@ function judge(x, z, eta, w) {
 
 // 測資 ( 特徵數:3 )
 
-var x = [[1, 0, 0, 1, 1, 1, 0, 1, 0, 0], [0, 1, 1, 0, 0, 0, 1, 0, 1, 1], [0, 0, 1, 0, 1, 1, 1, 0, 1, 1], [1, 1, 0, 0, 0, 1, 0, 1, 0, 1], [1, 0, 0, 0, 1, 1, 0, 1, 0, 1]]
+let x = [[1, 0, 0, 1, 1, 1, 0, 1, 0, 0], [0, 1, 1, 0, 0, 0, 1, 0, 1, 1], [0, 0, 1, 0, 1, 1, 1, 0, 1, 1], [1, 1, 0, 0, 0, 1, 0, 1, 0, 1], [1, 0, 0, 0, 1, 1, 0, 1, 0, 1]]
 
-var y = [0, 1, 1, 0, 1]
+let y = [0, 1, 1, 0, 1]
 
 //種類
-var ans_type = [0, 1]
+let ans_type = [0, 1]
 //疊代次數
-var t = 11
+let t = 11
 //閾值
-var z = 0.5
+let z = 0.5
 //學習率
-var eta = 0.1
+let eta = 0.1
 
 let ans = perceptron(x, y, z, eta, t, ans_type)
 
