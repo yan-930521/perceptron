@@ -1,3 +1,6 @@
+/**
+ * Copyright 2021 yan-930521  All Rights Reserved.
+ */
 const { log, clear } = console
 
 // i    j    k
